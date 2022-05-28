@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="이예진/3학년"
+        android:text="허동균/3학년"
         app:layout_constraintStart_toEndOf="@+id/nav_home"
         app:layout_constraintTop_toTopOf="@+id/nav_home" />
 
