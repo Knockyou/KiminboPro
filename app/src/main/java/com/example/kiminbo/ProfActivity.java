@@ -19,7 +19,7 @@ public class ProfActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.listview);
 
-        View counsel_btn = findViewById(R.id.counsel_btn);
+        //View counsel_btn = findViewById(R.id.counsel_btn);
         View back_btn = findViewById(R.id.back_btn);
 
         back_btn.setOnClickListener(new View.OnClickListener() {
@@ -32,13 +32,6 @@ public class ProfActivity extends AppCompatActivity {
             }
         });
 
-        counsel_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Intent intent = new Intent(getApplicationContext(),ProfActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }
