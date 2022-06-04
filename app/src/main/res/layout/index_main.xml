@@ -1,21 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EAEDF1">
+    android:background="#EAEDF1"
+    tools:context=".IndexActivity">
+
+    <!--<include
+        android:id="@+id/main_drawer"
+        layout="@layout/activity_main2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+    <!--
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity= "center"
+        android:id="@+id/diaryTextView" android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+        app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp" android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+    -->
+    <EditText
+        android:id="@+id/contextEditText"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:hint="내용을 입력하세요."
+        android:inputType="textMultiLine"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calendarView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="339dp"
+        android:layout_height="84dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/contextEditText"
+        app:layout_constraintTop_toTopOf="@id/calendarView" />
+
+    <Button
+        android:id="@+id/save_Btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="저장"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/contextEditText"
+        app:layout_constraintTop_toBottomOf="@id/calendarView" />
+
+
+    <Button
+        android:id="@+id/cha_Btn"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="수정"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/save_Btn"
+        app:layout_constraintEnd_toStartOf="@+id/del_Btn"
+        app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:text="삭제"
+        android:layout_width="176dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/del_Btn"
+        app:layout_constraintBaseline_toBaselineOf="@+id/cha_Btn" app:layout_constraintEnd_toEndOf="@+id/save_Btn"
+        android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:visibility="invisible"></Button>
+
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="364dp"
+        android:layout_width="0dp"
         android:layout_height="236dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginLeft="23dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:layout_marginBottom="65dp"
+        android:layout_marginBottom="10dp"
         android:background="#80E2E8EA"
         android:contentDescription="@string/contents"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -134,23 +229,6 @@
         tools:srcCompat="@drawable/community" />
 
     <TextView
-        android:id="@+id/textView15"
-        android:layout_width="411dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="19dp"
-        android:background="#F7FAFB"
-        android:gravity="center"
-        android:text="KIM INBO"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/time_table_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textView4"
         android:layout_width="65dp"
         android:layout_height="20dp"
@@ -201,655 +279,63 @@
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
-    <TableLayout
-        android:id="@+id/time_table_layout"
-        android:layout_width="402dp"
-        android:layout_height="370dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:animateLayoutChanges="true"
-        android:stretchColumns="0, 1, 2, 3, 4, 5"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15">
-
-        <TableRow
-            android:id="@+id/day_label"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#FFFFFF"
-                android:gravity="center"
-                android:text="-" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#FFD0D0"
-                android:gravity="center"
-                android:text="월요일"
-                android:textColor="#795548" />
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#BFE3FF"
-                android:gravity="center"
-                android:text="화요일"
-                android:textColor="#455A64" />
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#F7CBFF"
-                android:gravity="center"
-                android:text="수요일"
-                android:textColor="#8E24AA" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#F2F8B3"
-                android:gravity="center"
-                android:text="목요일"
-                android:textColor="#2E7D32" />
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#FBCE8B"
-                android:gravity="center"
-                android:text="금요일"
-                android:textColor="#6D4C41" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/time_01"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_left_cell_border"
-                android:gravity="center"
-                android:text="1"
-                android:textColor="#757575"
-                tools:ignore="TextContrastCheck" />
-
-            <TextView
-                android:id="@+id/mon_01"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text=""/>
-
-            <TextView
-                android:id="@+id/tuse_01"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/wen_01"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/thur_01"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/fri_01"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/time_02"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_left_cell_border"
-                android:gravity="center"
-                android:text="2"
-                android:textColor="#757575"
-                tools:ignore="TextContrastCheck" />
-
-            <TextView
-                android:id="@+id/mon_02"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/tuse_02"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/wen_02"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/thur_02"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/fri_02"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/time_03"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_left_cell_border"
-                android:gravity="center"
-                android:text="3"
-                android:textColor="#757575"
-                tools:ignore="TextContrastCheck" />
-
-            <TextView
-                android:id="@+id/mon_03"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/tuse_03"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/wen_03"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/thur_03"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/fri_03"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/time_04"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_left_cell_border"
-                android:gravity="center"
-                android:text="4"
-                tools:ignore="TextContrastCheck" />
-
-            <TextView
-                android:id="@+id/mon_04"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/tuse_04"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/wen_04"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/thur_04"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/fri_04"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/time_05"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_left_cell_border"
-                android:gravity="center"
-                android:text="5"
-                tools:ignore="TextContrastCheck" />
-
-            <TextView
-                android:id="@+id/mon_05"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/tuse_05"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/wen_05"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/thur_05"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/fri_05"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/time_06"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_left_cell_border"
-                android:gravity="center"
-                android:text="6"
-                android:textColor="#757575"
-                tools:ignore="TextContrastCheck" />
-
-            <TextView
-                android:id="@+id/mon_06"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/tuse_07"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/wen_06"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/thur_06"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/fri_06"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/time_07"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_left_cell_border"
-                android:gravity="center"
-                android:text="7"
-                tools:ignore="TextContrastCheck" />
-
-            <TextView
-                android:id="@+id/mon_07"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/tuse_08"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/wen_07"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/thur_07"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/fri_07"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/time_08"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_left_cell_border"
-                android:gravity="center"
-                android:text="8"
-                tools:ignore="TextContrastCheck" />
-
-            <TextView
-                android:id="@+id/mon_08"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/tuse_09"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/wen_08"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/thur_08"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/fri_08"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/time_09"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_left_cell_border"
-                android:gravity="center"
-                android:text="9"
-                android:textColor="#757575"
-                tools:ignore="TextContrastCheck" />
-
-            <TextView
-                android:id="@+id/mon_09"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/tuse_09"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/wen_09"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/thur_09"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/fri_09"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/time_10"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_left_cell_border"
-                android:gravity="center"
-                android:text="10"
-                tools:ignore="TextContrastCheck" />
-
-            <TextView
-                android:id="@+id/mon_10"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/tuse_10"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/wen_10"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/thur_10"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/fri_10"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/time_cell_border"
-                android:gravity="center"
-                android:text="" />
-
-        </TableRow>
-
-    </TableLayout>
-
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="65dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginBottom="21dp"
+        android:gravity="center"
+        android:text="증빙자료"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="80dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="145dp"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="모바일학생증"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="45dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="283dp"
+        android:layout_marginLeft="283dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginBottom="23dp"
+        android:gravity="center"
+        android:text="E-Class"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

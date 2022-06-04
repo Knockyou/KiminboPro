@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity2 extends AppCompatActivity {
-
+    //내정보 TEst
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
     View navHeader;
@@ -33,7 +33,7 @@ public class MainActivity2 extends AppCompatActivity {
         drawer = (DrawerLayout) findViewById(R.id.main_drawer);
 
         //getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //navigation toggle home
         toggle = new ActionBarDrawerToggle(this, drawer, R.string.d_open, R.string.d_close);

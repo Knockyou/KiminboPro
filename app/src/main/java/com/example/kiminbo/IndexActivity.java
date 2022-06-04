@@ -1,55 +1,94 @@
 package com.example.kiminbo;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Debug;
 import android.service.autofill.OnClickAction;
 import android.util.Log;
-import android.view.View;
 import android.view.MotionEvent;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+import com.google.android.material.navigation.NavigationView;
+
 public class IndexActivity extends AppCompatActivity{
-    TextView timeTabletext;
-    View timeTable;
+    //달력
+    public String fname=null;
+    public String str=null;
+    public CalendarView calendarView;
+    public Button cha_Btn,del_Btn,save_Btn;
+    public TextView textView2;
+    public EditText contextEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.index_main);
 
-        timeTable = findViewById(R.id.time_table_layout);
+        //[달력]
+        calendarView=findViewById(R.id.calendarView);
+        //diaryTextView=findViewById(R.id.diaryTextView);
+        save_Btn=findViewById(R.id.save_Btn);
+        del_Btn=findViewById(R.id.del_Btn);
+        cha_Btn=findViewById(R.id.cha_Btn);
+        textView2=findViewById(R.id.textView2);
+        //textView3=findViewById(R.id.textView3);
+        contextEditText=findViewById(R.id.contextEditText);
+        //로그인 및 회원가입 엑티비티에서 이름을 받아옴
+        Intent intent=getIntent();
+        String name=intent.getStringExtra("userName");
+        //String name="김승훈";
+        final String userID=intent.getStringExtra("userID");
+        //textView3.setText(name+"님의 시간표");
 
-        timeTable.setOnTouchListener(new View.OnTouchListener() {
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                int action = event.getAction();
-                float curX = event.getX(); //눌린 곳의 X좌표
-                float curY = event.getY(); //눌린 곳의 Y좌표
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                //diaryTextView.setVisibility(View.VISIBLE);
+                save_Btn.setVisibility(View.VISIBLE);
+                contextEditText.setVisibility(View.VISIBLE);
+                textView2.setVisibility(View.INVISIBLE);
+                cha_Btn.setVisibility(View.INVISIBLE);
+                del_Btn.setVisibility(View.INVISIBLE);
+                //diaryTextView.setText(String.format("%d / %d / %d",year,month+1,dayOfMonth));
+                contextEditText.setText("");
+                checkDay(year,month,dayOfMonth,userID);
+            }
+        });
+        save_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveDiary(fname);
+                str=contextEditText.getText().toString();
+                textView2.setText(str);
+                save_Btn.setVisibility(View.INVISIBLE);
+                cha_Btn.setVisibility(View.VISIBLE);
+                del_Btn.setVisibility(View.VISIBLE);
+                contextEditText.setVisibility(View.INVISIBLE);
+                textView2.setVisibility(View.VISIBLE);
 
-                if(action == event.ACTION_DOWN) { //처음 눌렸을 때
-                    System.out.println("손가락 눌림 : " + curX + ", " + curY);
-                } else if(action == event.ACTION_MOVE) { //누르고 움직였을 때
-                    System.out.println("손가락 움직임 : " + curX + ", " + curY);
-                } else if(action == event.ACTION_UP) { //누른걸 뗐을 때
-                    System.out.println("손가락 뗌 : " + curX + ", " + curY);
-                }
-                return true;
             }
         });
 
-        //private AdapterView.OnItemClickListener mItemClickListener = new AdapterView.OnItemClickListener() { @Override public void onItemClick(AdapterView<?> parent, View view, int position, long l_position) {
-        // parent는 AdapterView의 속성의 모두 사용 할 수 있다.
-        //String tv = (String)parent.getAdapter().getItem(position); Toast.makeText(getApplicationContext(), tv, Toast.LENGTH_SHORT).show(); // view는 클릭한 Row의 view를 Object로 반환해 준다. TextView tv_view = (TextView)view.findViewById(R.id.tv_row_title); tv_view.setText("바꿈"); // Position 은 클릭한 Row의 position 을 반환해 준다. Toast.makeText(getApplicationContext(), "" + position, Toast.LENGTH_SHORT).show(); // l_Position 은 클릭한 Row의 long type의 position 을 반환해 준다. Toast.makeText(getApplicationContext(), "l = " + l_position, Toast.LENGTH_SHORT).show(); } };
-
-
-
-        //페이지 이동
         View commu_btn = findViewById(R.id.commu_btn);
         View notice_btn = findViewById(R.id.notice_btn);
         View prof_btn = findViewById(R.id.prof_btn);
@@ -116,34 +155,94 @@ public class IndexActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
-
-
     }
 
-    //시간표 만들기
-    /*public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                System.out.println(event.getAxisValue());
-                timeTabletext = findViewById(R.id.mon_02);
-                timeTabletext.setText("과학");
-                break;
-            *//*case MotionEvent.ACTION_MOVE:
-                System.out.println("ddddd");
-                break;
-            case MotionEvent.ACTION_UP:
-                System.out.println("ddddd");
-                break;
-            case MotionEvent.ACTION_CANCEL:
-                System.out.println("ddddd");
-                break;
-            default:
-                break;*//*
+    public void  checkDay(int cYear,int cMonth,int cDay,String userID){
+        fname=""+userID+cYear+"-"+(cMonth+1)+""+"-"+cDay+".txt";//저장할 파일 이름설정
+        FileInputStream fis=null;//FileStream fis 변수
+
+        try{
+            fis=openFileInput(fname);
+
+            byte[] fileData=new byte[fis.available()];
+            fis.read(fileData);
+            fis.close();
+
+            str=new String(fileData);
+
+            contextEditText.setVisibility(View.INVISIBLE);
+            textView2.setVisibility(View.VISIBLE);
+            textView2.setText(str);
+
+            save_Btn.setVisibility(View.INVISIBLE);
+            cha_Btn.setVisibility(View.VISIBLE);
+            del_Btn.setVisibility(View.VISIBLE);
+
+            cha_Btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    contextEditText.setVisibility(View.VISIBLE);
+                    textView2.setVisibility(View.INVISIBLE);
+                    contextEditText.setText(str);
+
+                    save_Btn.setVisibility(View.VISIBLE);
+                    cha_Btn.setVisibility(View.INVISIBLE);
+                    del_Btn.setVisibility(View.INVISIBLE);
+                    textView2.setText(contextEditText.getText());
+                }
+
+            });
+            del_Btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    textView2.setVisibility(View.INVISIBLE);
+                    contextEditText.setText("");
+                    contextEditText.setVisibility(View.VISIBLE);
+                    save_Btn.setVisibility(View.VISIBLE);
+                    cha_Btn.setVisibility(View.INVISIBLE);
+                    del_Btn.setVisibility(View.INVISIBLE);
+                    removeDiary(fname);
+                }
+            });
+            if(textView2.getText()==null){
+                textView2.setVisibility(View.INVISIBLE);
+                //diaryTextView.setVisibility(View.VISIBLE);
+                save_Btn.setVisibility(View.VISIBLE);
+                cha_Btn.setVisibility(View.INVISIBLE);
+                del_Btn.setVisibility(View.INVISIBLE);
+                contextEditText.setVisibility(View.VISIBLE);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        return true;
-    }*/
+    }
+    @SuppressLint("WrongConstant")
+    public void removeDiary(String readDay){
+        FileOutputStream fos=null;
 
+        try{
+            fos=openFileOutput(readDay,MODE_NO_LOCALIZED_COLLATORS);
+            String content="";
+            fos.write((content).getBytes());
+            fos.close();
 
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @SuppressLint("WrongConstant")
+    public void saveDiary(String readDay) {
+        FileOutputStream fos = null;
 
+        try {
+            fos = openFileOutput(readDay, MODE_NO_LOCALIZED_COLLATORS);
+            String content = contextEditText.getText().toString();
+            fos.write((content).getBytes());
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
